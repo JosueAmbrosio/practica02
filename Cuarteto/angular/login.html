@@ -1,0 +1,67 @@
+<html ng-app="MainApp">
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .jumbotron {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .form-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    </style>
+    <script src="https://code.angularjs.org/1.2.16/angular.min.js"></script>
+    <script src="nucleo.js"></script>
+</head>
+
+<body ng-controller="controladorPrincipal">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Login</h1>
+        </div>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="text" id="correo" class="form-control" ng-model="correo" name="correo">
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" class="form-control" ng-model="password" name="password">
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" ng-click="validateUser()">Ingresar</button>
+            </div>
+        </form>
+            <div class="col-md-6">
+                <a href="registro.html"><button class="btn btn-success" ng-click="register()">Registrar</button></a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

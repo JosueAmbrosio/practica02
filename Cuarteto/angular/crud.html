@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="MainApp">
+<head>
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.2.16/angular.min.js"></script>
+    <script src="nucleo.js"></script>
+</head>
+<body ng-controller="controladorPrincipal">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Número de productos: {{productos.length}}</h1>
+            <h2>Bienvenido {{usuario.nombre}} - Correo: {{usuario.correo}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-1">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Categoría</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="producto in productos" ng-click="selectProducto(producto)">
+                            <td>{{producto.codigo}}</td>
+                            <td>{{producto.descripcion}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.stock}}</td>
+                            <td>{{producto.categoria}}</td>
+                            <td>{{producto.marca}}</td>
+                            <td>{{producto.modelo}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                <form name="myForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Código" ng-model="newProducto.codigo">
+                        <br>
+                        <input type="text" class="form-control input-lg" placeholder="Descripción" ng-model="newProducto.descripcion">
+                        <br>
+                        <input type="number" class="form-control input-lg" placeholder="Precio" ng-model="newProducto.precio">
+                        <br>
+                        <input type="number" class="form-control input-lg" placeholder="Stock" ng-model="newProducto.stock">
+                        <br>
+                        <input type="text" class="form-control input-lg" placeholder="Categoría" ng-model="newProducto.categoria">
+                        <br>
+                        <input type="text" class="form-control input-lg" placeholder="Marca" ng-model="newProducto.marca">
+                        <br>
+                        <input type="text" class="form-control input-lg" placeholder="Modelo" ng-model="newProducto.modelo">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg"
+                        ng-click="registrarProducto()" ng-disabled="myForm.$invalid || selected">
+                        Agregar
+                    </button>
+                    <button type="submit" class="btn btn-warning btn-lg"
+                        ng-click="modificarProducto()" ng-disabled="!newProducto.codigo || !newProducto.descripcion || !newProducto.precio || !newProducto.stock || !newProducto.categoria || !newProducto.marca || !newProducto.modelo || !selected">
+                        Modificar
+                    </button>
+                    <button type="submit" class="btn btn-danger btn-lg"
+                        ng-click="borrarProducto()" ng-disabled="!newProducto.codigo || !selected">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
